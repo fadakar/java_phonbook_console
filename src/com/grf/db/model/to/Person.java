@@ -1,6 +1,8 @@
 package com.grf.db.model.to;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
 
     public Person() {
 
