@@ -77,6 +77,7 @@ public class PhoneBookManager {
                             person = addPersonAction();
                             person.setUserId(auth.getId());
                             personBL.add(person);
+                            System.out.println("[info] " + person.getName() + " added to contacts successfully");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -84,6 +85,7 @@ public class PhoneBookManager {
                     case 4:
                         person = editPersonAction();
                         personBL.update(person, auth.getId());
+                        System.out.println("[info] " + person.getName() + " edited successfully");
                         break;
                     case 5:
                         try {
@@ -91,6 +93,8 @@ public class PhoneBookManager {
                             Person findPerson = personBL.find(id, auth.getId());
                             if (findPerson != null) {
                                 personBL.delete(id, auth.getId());
+                                System.out.println("[info] " + findPerson.getName() + " deleted successfully");
+
                             } else {
                                 System.out.println("[error] Contact not found");
                             }
@@ -110,7 +114,10 @@ public class PhoneBookManager {
                         boolean isLogin = auth.login(user.getUsername(), user.getPassword());
                         if (!isLogin) {
                             System.out.println("[error] Username or password is incorrect");
+                        }else{
+                            System.out.println("[info] Your logged in now");
                         }
+
                         break;
                     case 2:
                         UserRegisterDTO userRegisterDTO = showAuthRegisterAction();
